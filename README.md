@@ -18,4 +18,3 @@
  flutter run
  ```
  UI available at https://www.uistore.design/items/ramni-free-ecommerce-ui-kit-for-adobe-xd/
- hth
