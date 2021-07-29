@@ -12,6 +12,8 @@ enum AssetName {
   CrossIcon,
   SuccessIcon,
   DemoPic,
+  ChairPic,
+  CupPic,
 }
 
 extension AssetNameExtension on AssetName {
@@ -43,6 +45,10 @@ extension AssetNameExtension on AssetName {
         return 'static/png/success_msg.png';
       case AssetName.DemoPic:
         return 'static/png/demo_pic.png';
+      case AssetName.ChairPic:
+        return 'static/png/chair.png';
+      case AssetName.CupPic:
+        return 'static/png/cup.png';
     }
   }
 }
