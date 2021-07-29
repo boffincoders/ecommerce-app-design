@@ -4,8 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:ramni_app/enum/assets.dart';
 import 'package:ramni_app/views/cart.dart';
+import 'package:ramni_app/views/chat.dart';
+import 'package:ramni_app/views/checkout.dart';
+import 'package:ramni_app/views/filter.dart';
 import 'package:ramni_app/views/product_detail.dart';
+import 'package:ramni_app/views/profile.dart';
 import 'dart:math';
+
+import 'package:ramni_app/views/success_msg.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -42,192 +48,207 @@ class _HomePageState extends State<HomePage> {
           ),
           SafeArea(
               child: Container(
-                width: 200.0,
-                padding: EdgeInsets.all(8.0),
-                child: Column(
+            width: 200.0,
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                DrawerHeader(
+                    child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    DrawerHeader(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CircleAvatar(
-                              radius: 40.0,
-                              backgroundImage: NetworkImage(
-                                  "https://picsum.photos/seed/picsum/200/300",
-                                  scale: 1),
-                            ),
-                            SizedBox(
-                              height: 10.0,
-                            ),
-                            Text(
-                              "Pankanj Patel",
-                              style: TextStyle(
-                                  fontSize: 18.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              "pankanj.patel@yahoo.com",
-                              maxLines: 2,
-                              softWrap: true,
-                              textAlign: TextAlign.left,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontSize: 12.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.normal),
-                            )
-                          ],
-                        )),
-                    Expanded(
-                      child: ListView(
-                        children: [
-                          ListTile(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => HomePage()));
-                              },
-                              leading: Icon(
-                                Icons.home,
+                    CircleAvatar(
+                      radius: 40.0,
+                      backgroundImage: NetworkImage(
+                          "https://picsum.photos/seed/picsum/200/300",
+                          scale: 1),
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    Text(
+                      "Pankanj Patel",
+                      style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "pankanj.patel@yahoo.com",
+                      maxLines: 2,
+                      softWrap: true,
+                      textAlign: TextAlign.left,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          fontSize: 12.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.normal),
+                    )
+                  ],
+                )),
+                Expanded(
+                  child: ListView(
+                    children: [
+                      ListTile(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          },
+                          leading: Icon(
+                            Icons.home,
+                            color: Colors.white,
+                          ),
+                          title: Text(
+                            "Home",
+                            style: TextStyle(color: Colors.white),
+                          )),
+                      ListTile(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Carts()));
+                          },
+                          leading: Icon(
+                            Icons.shopping_cart,
+                            color: Colors.white,
+                          ),
+                          title: Text(
+                            "My Cart",
+                            style: TextStyle(color: Colors.white),
+                          )),
+                      ListTile(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ProductDetail()));
+                          },
+                          leading: Icon(
+                            Icons.category,
+                            color: Colors.white,
+                          ),
+                          title: Badge(
+                            shape: BadgeShape.square,
+                            elevation: 0,
+                            position: BadgePosition.topEnd(top: 15, end: 1),
+                            badgeContent: Container(
+                              width: 30,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
                                 color: Colors.white,
                               ),
-                              title: Text(
-                                "Home",
-                                style: TextStyle(color: Colors.white),
+                              child: Center(
+                                  child: Text(
+                                "3",
+                                style: TextStyle(color: Colors.black),
                               )),
-                          ListTile(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Carts()));
-                              },
-                              leading: Icon(
-                                Icons.shopping_cart,
-                                color: Colors.white,
-                              ),
-                              title: Text(
-                                "My Cart",
-                                style: TextStyle(color: Colors.white),
-                              )),
-                          ListTile(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ProductDetail()));
-                              },
-                              leading: Icon(
-                                Icons.category,
-                                color: Colors.white,
-                              ),
-                              title: Badge(
-                                shape: BadgeShape.square,
-                                elevation: 0,
-                                position: BadgePosition.topEnd(top: 15, end: 1),
-                                badgeContent: Container(
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    color: Colors.white,
-                                  ),
-                                  child: Center(
-                                      child: Text(
-                                        "3",
-                                        style: TextStyle(color: Colors.black),
-                                      )),
-                                ),
-                                child: Text(
-                                  "Upcoming Orders",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              )),
-                          ListTile(
-                              onTap: () {
-                                /* Navigator.push(
+                            ),
+                            child: Text(
+                              "Upcoming Orders",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          )),
+                      ListTile(
+                          onTap: () {
+                            /* Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Checkout()));*/
-                              },
-                              leading: Icon(
-                                Icons.card_giftcard,
-                                color: Colors.white,
-                              ),
-                              title: Text(
-                                "Offer Zone",
-                                style: TextStyle(color: Colors.white),
-                              )),
-                          ListTile(
-                              onTap: () {
-                                /* Navigator.push(
+                          },
+                          leading: Icon(
+                            Icons.card_giftcard,
+                            color: Colors.white,
+                          ),
+                          title: Text(
+                            "Offer Zone",
+                            style: TextStyle(color: Colors.white),
+                          )),
+                      ListTile(
+                          onTap: () {
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Filter()));*/
-                              },
-                              leading: Icon(
-                                Icons.account_circle_outlined,
-                                color: Colors.white,
-                              ),
-                              title: Text(
-                                "My Account",
-                                style: TextStyle(color: Colors.white),
-                              )),
-                          ListTile(
-                              onTap: () {
-                                /*Navigator.push(
+                                    builder: (context) => Profile()));
+                          },
+                          leading: Icon(
+                            Icons.account_circle_outlined,
+                            color: Colors.white,
+                          ),
+                          title: Text(
+                            "My Account",
+                            style: TextStyle(color: Colors.white),
+                          )),
+                      ListTile(
+                          onTap: () {
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Profile()));*/
-                              },
-                              leading: Icon(
-                                Icons.comment_bank_outlined,
-                                color: Colors.white,
-                              ),
-                              title: Text(
-                                "Chat",
-                                style: TextStyle(color: Colors.white),
-                              )),
-                          ListTile(
-                              onTap: () {
-                                /*Navigator.push(
+                                    builder: (context) => ChatScreen()));
+                          },
+                          leading: Icon(
+                            Icons.comment_bank_outlined,
+                            color: Colors.white,
+                          ),
+                          title: Text(
+                            "Chat",
+                            style: TextStyle(color: Colors.white),
+                          )),
+                      ListTile(
+                          onTap: () {
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SuccessScreen()));*/
-                              },
-                              leading: Icon(
-                                Icons.help,
-                                color: Colors.white,
-                              ),
-                              title: Text(
-                                "Help",
-                                style: TextStyle(color: Colors.white),
-                              )),
-                          ListTile(
-                              onTap: () {
-                                /* Navigator.push(
+                                    builder: (context) => Checkout()));
+                          },
+                          leading: Icon(
+                            Icons.help,
+                            color: Colors.white,
+                          ),
+                          title: Text(
+                            "Help",
+                            style: TextStyle(color: Colors.white),
+                          )),
+                      ListTile(
+                          onTap: () {
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => WelcomeScreen()));*/
-                              },
-                              leading: Icon(
-                                Icons.logout,
-                                color: Colors.white,
-                              ),
-                              title: Text(
-                                "Logout",
-                                style: TextStyle(color: Colors.white),
-                              )),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              )),
+                                    builder: (context) => Filter()));
+                          },
+                          leading: Icon(
+                            Icons.help,
+                            color: Colors.white,
+                          ),
+                          title: Text(
+                            "Filter",
+                            style: TextStyle(color: Colors.white),
+                          )),
+                      ListTile(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SuccessScreen()));
+                          },
+                          leading: Icon(
+                            Icons.logout,
+                            color: Colors.white,
+                          ),
+                          title: Text(
+                            "Logout",
+                            style: TextStyle(color: Colors.white),
+                          )),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )),
           TweenAnimationBuilder(
               curve: Curves.easeInExpo,
               tween: Tween<double>(begin: 0, end: value.toDouble()),
@@ -240,7 +261,7 @@ class _HomePageState extends State<HomePage> {
                       ..setEntry(0, 3, 200 * val)
                       ..rotateY((pi / 6) * val),
                     child: Scaffold(
-                      // backgroundColor: Colors.yellow,
+                        // backgroundColor: Colors.yellow,
                         bottomNavigationBar: SnakeNavigationBar.color(
                           backgroundColor: Colors.red,
                           behaviour: SnakeBarBehaviour.floating,
@@ -417,25 +438,25 @@ class _HomePageState extends State<HomePage> {
                         child: Row(children: <Widget>[
                           Expanded(
                               child: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(2),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2),
+                                color: Colors.grey.withOpacity(.1),
+                                border: Border.all(
                                     color: Colors.grey.withOpacity(.1),
-                                    border: Border.all(
-                                        color: Colors.grey.withOpacity(.1),
-                                        width: 1)),
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Search",
-                                    icon: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Icon(Icons.search),
-                                    ),
-                                    hintStyle:
-                                    TextStyle(color: Colors.grey, fontSize: 14),
-                                  ),
+                                    width: 1)),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "Search",
+                                icon: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(Icons.search),
                                 ),
-                              )),
+                                hintStyle:
+                                    TextStyle(color: Colors.grey, fontSize: 14),
+                              ),
+                            ),
+                          )),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
@@ -469,11 +490,11 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Divider(
-                                    color: Colors.grey.withOpacity(.9),
-                                  ),
-                                )),
+                              padding: const EdgeInsets.all(8.0),
+                              child: Divider(
+                                color: Colors.grey.withOpacity(.9),
+                              ),
+                            )),
                             Text(
                               "See All",
                               style: TextStyle(
@@ -492,18 +513,18 @@ class _HomePageState extends State<HomePage> {
                               scrollDirection: Axis.horizontal,
                               itemCount: 4,
                               itemBuilder: (context, index) => Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius:
-                                      BorderRadius.circular(5.0),
-                                      border: Border.all(
-                                          color: Colors.black12, width: 2)),
-                                  child: Cart("Ramni Chair", "\$4000",
-                                      Icons.shopping_cart_outlined, ""),
-                                ),
-                              )),
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                          border: Border.all(
+                                              color: Colors.black12, width: 2)),
+                                      child: Cart("Ramni Chair", "\$4000",
+                                          Icons.shopping_cart_outlined, ""),
+                                    ),
+                                  )),
                         ),
                       )
                     ],
@@ -524,11 +545,11 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Divider(
-                                    color: Colors.grey.withOpacity(.9),
-                                  ),
-                                )),
+                              padding: const EdgeInsets.all(8.0),
+                              child: Divider(
+                                color: Colors.grey.withOpacity(.9),
+                              ),
+                            )),
                             Text(
                               "See All",
                               style: TextStyle(
@@ -579,18 +600,18 @@ class _HomePageState extends State<HomePage> {
                               scrollDirection: Axis.horizontal,
                               itemCount: 4,
                               itemBuilder: (context, index) => Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius:
-                                      BorderRadius.circular(5.0),
-                                      border: Border.all(
-                                          color: Colors.black12, width: 2)),
-                                  child: Cart("Ramni Chair", "\$4000",
-                                      Icons.shopping_cart_outlined, ""),
-                                ),
-                              )),
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                          border: Border.all(
+                                              color: Colors.black12, width: 2)),
+                                      child: Cart("Ramni Chair", "\$4000",
+                                          Icons.shopping_cart_outlined, ""),
+                                    ),
+                                  )),
                         ),
                       )
                     ],

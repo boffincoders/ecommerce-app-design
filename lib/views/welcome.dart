@@ -22,8 +22,14 @@ class _WelcomeState extends State<WelcomeScreen> {
           Positioned(
             top: 0.0,
             child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width,
               decoration: BoxDecoration(color: Colors.red),
             ),
           ),
@@ -52,7 +58,7 @@ class _WelcomeState extends State<WelcomeScreen> {
                           child: Text(
                             "Welcome to the Ramni",
                             style:
-                                TextStyle(color: Colors.white, fontSize: 18.0),
+                            TextStyle(color: Colors.white, fontSize: 18.0),
                           ),
                         ),
                       )
@@ -109,11 +115,17 @@ class _WelcomeState extends State<WelcomeScreen> {
                       Padding(
                         padding: const EdgeInsets.only(top: 40.0),
                         child:
-                            AppButton("UPLOAD PICTURE", 50.0, 18.0, true, null),
+                        AppButton("UPLOAD PICTURE", 50.0, 18.0, true, () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => HomePage()));
+                        }),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(.0),
-                        child: AppButton("SKIP", 60.0, 20.0, false, null),
+                        child: AppButton("SKIP", 60.0, 20.0, false, (){
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => HomePage()));
+                        }),
                       )
                     ],
                   )
